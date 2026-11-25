@@ -1,0 +1,5 @@
+CLASS zbp_i_qm_inspection DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zi_qm_inspection.
+ENDCLASS.
+
+CLASS zbp_i_qm_inspection IMPLEMENTATION.
+ENDCLASS.

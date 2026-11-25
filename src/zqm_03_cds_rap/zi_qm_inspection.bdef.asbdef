@@ -1,0 +1,36 @@
+managed implementation in class zbp_i_qm_inspection unique;
+strict ( 2 );
+
+define behavior for ZI_QM_INSPECTION alias Inspection
+persistent table zqm_inspection
+lock master
+authorization master ( instance )
+etag master LastChangedAt
+{
+  create;
+  update;
+  delete;
+
+  field ( numbering : managed, readonly ) LotId;
+  field ( readonly ) VendorGrade, Status, LastChangedAt;
+
+  action acceptStock result [1] $self;
+  action rejectVendor result [1] $self;
+
+  validation validateQuantities on save { create; update; field ReceivedQty, AcceptedQty, RejectedQty; }
+ determination setVendorGrade on save { create; field ReceivedQty, AcceptedQty; }
+
+  mapping for zqm_inspection
+  {
+    LotId         = lot_id;
+    ShipmentId    = shipment_id;
+    VendorId      = vendor_id;
+    ReceivedQty   = received_qty;
+    AcceptedQty   = accepted_qty;
+    RejectedQty   = rejected_qty;
+    Unit          = unit;
+    Status        = status;
+    VendorGrade   = vendor_grade;
+    LastChangedAt = last_changed_at;
+  }
+}

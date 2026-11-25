@@ -1,0 +1,4 @@
+@EndUserText.label: 'Quality Inspection Service'
+define service ZUI_QM_INSPECTION {
+  expose ZC_QM_INSPECTION as InspectionLot;
+}

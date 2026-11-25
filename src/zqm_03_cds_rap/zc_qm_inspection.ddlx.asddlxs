@@ -1,0 +1,55 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Inspection Lot',
+    typeNamePlural: 'Inspection Lots',
+    title: { type: #STANDARD, value: 'ShipmentId' }
+  }
+}
+annotate entity ZC_QM_INSPECTION with
+{
+  @UI.facet: [ { id: 'Inspection',
+                 purpose: #STANDARD,
+                 type: #IDENTIFICATION_REFERENCE,
+                 label: 'Quality Inspection Details',
+                 position: 10 } ]
+
+  @UI.hidden: true
+  LotId;
+
+  @UI: { lineItem:       [ { position: 10, label: 'Shipment ID' },
+                           { type: #FOR_ACTION, dataAction: 'acceptStock', label: 'Accept to Stock' },
+                           { type: #FOR_ACTION, dataAction: 'rejectVendor', label: 'Reject to Vendor' } ],
+         identification: [ { position: 10, label: 'Shipment ID' } ],
+         selectionField: [ { position: 10 } ] }
+  ShipmentId;
+
+  @UI: { lineItem:       [ { position: 20, label: 'Vendor ID' } ],
+         identification: [ { position: 20, label: 'Vendor ID' } ],
+         selectionField: [ { position: 20 } ] }
+  VendorId;
+
+  @UI: { lineItem:       [ { position: 30, label: 'Received Qty' } ],
+         identification: [ { position: 30, label: 'Received Qty' } ] }
+  ReceivedQty;
+
+  @UI: { lineItem:       [ { position: 40, label: 'Accepted Qty' } ],
+         identification: [ { position: 40, label: 'Accepted Qty' } ] }
+  AcceptedQty;
+
+  @UI: { lineItem:       [ { position: 50, label: 'Rejected Qty' } ],
+         identification: [ { position: 50, label: 'Rejected Qty' } ] }
+  RejectedQty;
+
+  @UI: { identification: [ { position: 60, label: 'Unit' } ] }
+  Unit;
+
+  @UI: { lineItem:       [ { position: 60, label: 'Status' } ],
+         identification: [ { position: 70, label: 'Status' } ],
+         selectionField: [ { position: 30 } ] }
+  Status;
+
+  @UI: { lineItem:       [ { position: 70, label: 'Vendor Grade' } ],
+         identification: [ { position: 80, label: 'Vendor Grade' } ] }
+  VendorGrade;
+}
